@@ -11,8 +11,11 @@ import java.util.stream.Collectors;
 public class BookService {
     private final AuthorEntityRepository authorEntityRepository;
     private final BookEntityRepository bookEntityRepository;
+    private final BookValidator bookValidator;
 
     public Book addBook(CreateBookModel book) {
+        bookValidator.validate(book);
+
         String authorName = book.getAuthorName();
         AuthorEntity author = getOrCreateAuthor(authorName);
 
