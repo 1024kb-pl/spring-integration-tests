@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
+@Table(name = "books")
 class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,7 @@ class BookEntity {
 
     private String title;
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private AuthorEntity author;
 
     BookEntity(String title, AuthorEntity author) {
