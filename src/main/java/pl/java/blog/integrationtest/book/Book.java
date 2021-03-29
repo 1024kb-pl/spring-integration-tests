@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @Getter
 public class Book {
-    private final String id;
+    private final Long id;
     private final String title;
     private final String authorName;
 }

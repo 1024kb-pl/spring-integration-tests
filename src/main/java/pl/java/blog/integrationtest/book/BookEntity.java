@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Entity
 class BookEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String title;
     @ManyToOne

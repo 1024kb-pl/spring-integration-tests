@@ -13,8 +13,8 @@ import java.util.List;
 @Entity
 class AuthorEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     @OneToMany(mappedBy = "author")
     private List<BookEntity> books;
