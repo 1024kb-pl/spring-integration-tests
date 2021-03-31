@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @Getter
 @AllArgsConstructor
-public class CreateBookModel {
+class CreateBookModel {
     private String title;
     private String authorName;
 }

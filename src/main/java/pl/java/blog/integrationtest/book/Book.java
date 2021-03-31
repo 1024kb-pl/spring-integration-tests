@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Getter
-public class Book {
+class Book {
     private final Long id;
     private final String title;
     private final String authorName;
