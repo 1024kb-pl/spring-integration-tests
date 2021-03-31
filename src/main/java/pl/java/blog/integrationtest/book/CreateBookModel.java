@@ -1,13 +1,12 @@
 package pl.java.blog.integrationtest.book;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @Setter
 @Getter
+@AllArgsConstructor
 public class CreateBookModel {
     private String title;
     private String authorName;

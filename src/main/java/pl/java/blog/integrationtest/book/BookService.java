@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class BookService {
+class BookService {
     private final AuthorEntityRepository authorEntityRepository;
     private final BookEntityRepository bookEntityRepository;
     private final BookValidator bookValidator;
@@ -33,7 +33,7 @@ public class BookService {
     }
 
     private AuthorEntity getOrCreateAuthor(String authorName) {
-        if (authorEntityRepository.existsByName(authorName)) {
+        if (!authorEntityRepository.existsByName(authorName)) {
             return authorEntityRepository.save(new AuthorEntity(authorName));
         }
 

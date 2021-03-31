@@ -1,11 +1,9 @@
-package pl.java.blog.integrationtest.rest;
+package pl.java.blog.integrationtest.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.java.blog.integrationtest.book.Book;
-import pl.java.blog.integrationtest.book.BookService;
-import pl.java.blog.integrationtest.book.CreateBookModel;
+
 import pl.java.blog.integrationtest.exception.ValidationException;
 
 import java.util.List;
@@ -13,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/book")
 @RequiredArgsConstructor
-public class BookController {
+class BookController {
     private final BookService bookService;
 
     @PostMapping
