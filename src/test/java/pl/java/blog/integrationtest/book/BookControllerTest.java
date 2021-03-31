@@ -31,6 +31,20 @@ public class BookControllerTest {
 
 
     @Test
+    void shouldReturnAllExistingBooks() throws Exception {
+        // when:
+        RequestEntity<Void> request = RequestEntity
+                .get(createServerAddress())
+                .build();
+
+        ResponseEntity<List<Book>> response = restTemplate.exchange(request, new ParameterizedTypeReference<List<Book>>(){});
+
+        // then:
+        assertTrue(response.getStatusCode().is2xxSuccessful());
+        assertEquals(2, response.getBody().size());
+    }
+
+    @Test
     void shouldReturn2xxWhenAddBookSuccessfully() throws Exception {
         // given:
         CreateBookModel createBookModel = new CreateBookModel("Great book", "Great author");
@@ -43,7 +57,7 @@ public class BookControllerTest {
 
         ResponseEntity<Book> response = restTemplate.exchange(request, Book.class);
 
-        // expect:
+        // then:
         Book body = response.getBody();
 
         assertTrue(response.getStatusCode().is2xxSuccessful());
@@ -64,8 +78,7 @@ public class BookControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(request, String.class);
 
-        // expect:
-
+        // then:
         assertTrue(response.getStatusCode().is4xxClientError());
         assertEquals("Book has to have a title.", response.getBody());
     }
@@ -83,26 +96,11 @@ public class BookControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(request, String.class);
 
-        // expect:
-
+        // then:
         assertTrue(response.getStatusCode().is4xxClientError());
         assertEquals("Book author can not be empty.", response.getBody());
     }
 
-
-    @Test
-    void shouldReturnAllExistingBooks() throws Exception {
-        // when:
-        RequestEntity<Void> request = RequestEntity
-                .get(createServerAddress())
-                .build();
-
-        ResponseEntity<List<Book>> response = restTemplate.exchange(request, new ParameterizedTypeReference<List<Book>>() {
-        });
-        // expect:
-        assertTrue(response.getStatusCode().is2xxSuccessful());
-        assertEquals(2, response.getBody().size());
-    }
 
     private URI createServerAddress() throws URISyntaxException {
         return new URI("http://localhost:" + serverPort + "/book");
